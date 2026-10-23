@@ -1,0 +1,14 @@
+/* Apply Assist Pro - Page Field Highlighting */
+
+.apply-assist-field-filled {
+  outline: 2px solid #10b981 !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.35) !important;
+  transition: all 0.3s ease !important;
+}
+
+.apply-assist-field-active {
+  outline: 2px solid #6366f1 !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 12px rgba(99, 102, 241, 0.4) !important;
+}

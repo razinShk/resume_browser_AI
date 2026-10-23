@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apply Assist Pro — Jobright Edition</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="app-container">
+    <!-- Top Brand Header -->
+    <header class="app-header">
+      <div class="brand-left">
+        <div class="brand-badge">⚡</div>
+        <div>
+          <h1 class="brand-title">Apply Assist Pro</h1>
+          <p class="brand-subtitle">AI Job Copilot · Jobright Edition</p>
+        </div>
+      </div>
+      <div class="status-indicator">
+        <span class="status-dot"></span>
+        <span class="status-text">Active</span>
+      </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="nav-tabs">
+      <button class="tab-btn active" data-tab="tab-overview">Overview</button>
+      <button class="tab-btn" data-tab="tab-profile">Profile</button>
+      <button class="tab-btn" data-tab="tab-resume">Resume</button>
+      <button class="tab-btn" data-tab="tab-ai">AI & APIs</button>
+      <button class="tab-btn" data-tab="tab-ats">ATS Tester</button>
+    </nav>
+
+    <!-- TAB 1: Overview -->
+    <section id="tab-overview" class="tab-content active">
+      <div class="candidate-hero-card">
+        <div class="candidate-avatar">RS</div>
+        <div class="candidate-info">
+          <h2 id="overview-name">Razin Shaikh</h2>
+          <p id="overview-role">Full Stack & AI Developer</p>
+          <div class="candidate-tags">
+            <span class="meta-tag">Pune, India</span>
+            <span class="meta-tag">CGPA 8.70</span>
+            <span class="meta-tag highlight">Play Store Dev</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <span class="stat-number" id="skills-count">42</span>
+          <span class="stat-label">Skills Indexed</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">5</span>
+          <span class="stat-label">Production Apps</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number" id="ats-baseline">94%</span>
+          <span class="stat-label">Avg ATS Match</span>
+        </div>
+      </div>
+
+      <div class="action-banner">
+        <div class="banner-text">
+          <strong>⚡ Ready to apply anywhere</strong>
+          <p>Open any company careers page or ATS (Greenhouse, Lever, Workday, etc.). The copilot appears automatically.</p>
+        </div>
+        <div class="btn-row">
+          <button type="button" id="btn-preview-pdf" class="btn-secondary">Preview ATS PDF</button>
+          <button type="button" id="btn-quick-tailor" class="btn-primary">Generate Tailored PDF</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 2: Profile -->
+    <section id="tab-profile" class="tab-content">
+      <form id="profile-form">
+        <!-- Personal Info -->
+        <div class="section-card">
+          <h3 class="section-title">Personal Information</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Full Name</label>
+              <input type="text" name="personal.fullName" />
+            </div>
+            <div class="form-group">
+              <label>Middle Name</label>
+              <input type="text" name="personal.middleName" placeholder="Razin" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" name="personal.email" />
+            </div>
+            <div class="form-group">
+              <label>Phone</label>
+              <input type="text" name="personal.phone" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Gender</label>
+              <select name="personal.gender">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+                <option value="Decline to state">Decline to state</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Current Location (City)</label>
+              <input type="text" name="employment.currentLocation" placeholder="Pune" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Full Address / Summary</label>
+              <input type="text" name="personal.location" />
+            </div>
+            <div class="form-group">
+              <label>Target Role</label>
+              <input type="text" name="employment.targetRole" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Links -->
+        <div class="section-card">
+          <h3 class="section-title">Online Profiles & Portfolios</h3>
+          <div class="form-group">
+            <label>LinkedIn URL</label>
+            <input type="url" name="links.linkedin" />
+          </div>
+          <div class="form-group">
+            <label>GitHub URL</label>
+            <input type="url" name="links.github" />
+          </div>
+          <div class="form-group">
+            <label>Portfolio / Personal Website</label>
+            <input type="url" name="links.portfolio" />
+          </div>
+          <div class="form-group">
+            <label>Google Play Store Dev Link</label>
+            <input type="url" name="links.playstore" />
+          </div>
+          <div class="form-group">
+            <label>Kaggle Profile</label>
+            <input type="url" name="links.kaggle" />
+          </div>
+        </div>
+
+        <!-- Employment & Preferences -->
+        <div class="section-card">
+          <h3 class="section-title">Employment & Job Preferences</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Experience (Years)</label>
+              <input type="text" name="employment.experienceYears" placeholder="2" />
+            </div>
+            <div class="form-group">
+              <label>Experience (Months)</label>
+              <input type="text" name="employment.experienceMonths" placeholder="0" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Last Drawn Salary (INR)</label>
+              <input type="text" name="employment.lastDrawnSalary" placeholder="600000" />
+            </div>
+            <div class="form-group">
+              <label>Expected Annual Salary (INR)</label>
+              <input type="text" name="employment.expectedSalary" placeholder="850000" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Notice Period</label>
+              <input type="text" name="employment.noticePeriod" placeholder="Immediate" />
+            </div>
+            <div class="form-group">
+              <label>Preferred Location 1</label>
+              <input type="text" name="employment.preferredLocation" placeholder="Pune" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Preferred Location 2</label>
+              <input type="text" name="employment.preferredLocation2" placeholder="Mumbai" />
+            </div>
+            <div class="form-group">
+              <label>Preferred Location 3</label>
+              <input type="text" name="employment.preferredLocation3" placeholder="Bangalore" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Education & Work Auth -->
+        <div class="section-card">
+          <h3 class="section-title">Education & Work Authorization</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label>University / College</label>
+              <input type="text" name="education.school" />
+            </div>
+            <div class="form-group">
+              <label>Degree & Major</label>
+              <input type="text" name="education.degreeFull" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Legally Authorized to Work?</label>
+              <select name="workAuthorization.authorized">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Require Visa Sponsorship?</label>
+              <select name="workAuthorization.needsSponsorship">
+                <option value="No">No</option>
+                <option value="Yes">Yes</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Date of Birth & Demographics -->
+        <div class="section-card">
+          <h3 class="section-title">Date of Birth & Demographics</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Birth Day</label>
+              <input type="text" name="dob.day" placeholder="15" />
+            </div>
+            <div class="form-group">
+              <label>Birth Month</label>
+              <input type="text" name="dob.monthName" placeholder="August" />
+            </div>
+            <div class="form-group">
+              <label>Birth Year</label>
+              <input type="text" name="dob.year" placeholder="2003" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Country</label>
+              <input type="text" name="personal.country" value="India" />
+            </div>
+            <div class="form-group">
+              <label>Phone Device Type</label>
+              <select name="personal.phoneDeviceType">
+                <option value="Mobile">Mobile</option>
+                <option value="Telephone">Telephone</option>
+                <option value="Pager">Pager</option>
+                <option value="Fax">Fax</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Phone Dial Code</label>
+              <input type="text" name="personal.locationPhoneCode" placeholder="India (+91)" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Referral Source</label>
+              <input type="text" name="meta.referralSource" placeholder="Job Board" />
+            </div>
+            <div class="form-group">
+              <label>Job Board (e.g. LinkedIn)</label>
+              <input type="text" name="meta.source" placeholder="LinkedIn" />
+            </div>
+            <div class="form-group">
+              <label>Worked here before?</label>
+              <select name="employment.previousWorker">
+                <option value="No">No</option>
+                <option value="Yes">Yes</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn-primary full-width">Save Profile Changes</button>
+          <button type="button" id="btn-reset-profile" class="btn-ghost">Reset to Resume Defaults</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- TAB 3: Resume -->
+    <section id="tab-resume" class="tab-content">
+      <div class="section-card">
+        <h3 class="section-title">Upload Custom Resume PDF</h3>
+        <p class="section-desc">Upload your original PDF resume. The extension will automatically attach this file to job applications!</p>
+        
+        <div class="file-upload-zone" id="pdf-drop-zone">
+          <div class="upload-icon">📄</div>
+          <span class="upload-text">Click or drag & drop your resume PDF here</span>
+          <span class="upload-sub" id="current-pdf-label">Using: Razin_Shaikh_Resume.pdf (ATS Generated)</span>
+          <input type="file" id="pdf-file-input" accept=".pdf" style="display:none;" />
+        </div>
+        <div class="file-actions" style="margin-top: 10px;">
+          <button type="button" id="btn-download-active-pdf" class="btn-secondary full-width">Download Active ATS Resume PDF</button>
+        </div>
+      </div>
+
+      <div class="section-card">
+        <h3 class="section-title">Resume Summary & Skills</h3>
+        <div class="form-group">
+          <label>Profile Summary</label>
+          <textarea id="edit-resume-summary" rows="4"></textarea>
+        </div>
+        <div class="form-group">
+          <label>Skills (Comma-separated)</label>
+          <textarea id="edit-resume-skills" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+          <label>Experience Highlights (One bullet per line)</label>
+          <textarea id="edit-resume-bullets" rows="5"></textarea>
+        </div>
+        <button type="button" id="btn-save-resume-content" class="btn-primary full-width">Save Resume Details</button>
+      </div>
+    </section>
+
+    <!-- TAB 4: AI & APIs -->
+    <section id="tab-ai" class="tab-content">
+      <div class="section-card">
+        <h3 class="section-title">AI Drafting Engine</h3>
+        <p class="section-desc">Select which AI provider writes customized answers for screening questions ("Why this company?", "Describe your experience").</p>
+        
+        <div class="form-group">
+          <label>Active AI Provider</label>
+          <select id="ai-provider-select">
+            <option value="replicate">Replicate (Llama 3 / Mixtral)</option>
+            <option value="gemini">Google Gemini (Gemini 2.5 Flash)</option>
+            <option value="anthropic">Anthropic Claude (Claude 3.5 Sonnet)</option>
+            <option value="smart_offline">Built-in Smart Offline Engine (No Key Required)</option>
+          </select>
+        </div>
+
+        <div class="form-group provider-token" id="group-replicate">
+          <label>Replicate API Token (r8_...)</label>
+          <input type="password" id="replicate-token-input" placeholder="r8_xxxxxxxxxxxxxxxxxxxxxx" />
+          <small class="help-text">Used for Replicate cloud inference for custom responses.</small>
+        </div>
+
+        <div class="form-group provider-token" id="group-gemini" style="display:none;">
+          <label>Google Gemini API Key</label>
+          <input type="password" id="gemini-key-input" placeholder="AIzaSy..." />
+        </div>
+
+        <div class="form-group provider-token" id="group-anthropic" style="display:none;">
+          <label>Anthropic API Key</label>
+          <input type="password" id="anthropic-key-input" placeholder="sk-ant-..." />
+        </div>
+
+        <div class="form-group">
+          <label>Answer Tone</label>
+          <select id="ai-tone-select">
+            <option value="professional_impactful">Professional & High Impact</option>
+            <option value="concise">Concise & Direct</option>
+            <option value="technical">Technical & Deep</option>
+          </select>
+        </div>
+
+        <button type="button" id="btn-save-ai-settings" class="btn-primary full-width">Save AI Settings</button>
+      </div>
+
+      <div class="section-card">
+        <h3 class="section-title">Automation Preferences</h3>
+        <label class="checkbox-row">
+          <input type="checkbox" id="pref-auto-detect" checked />
+          <span>Auto-detect jobs and show copilot on page load</span>
+        </label>
+        <label class="checkbox-row">
+          <input type="checkbox" id="pref-auto-attach" checked />
+          <span>Auto-attach resume PDF to file inputs</span>
+        </label>
+        <label class="checkbox-row">
+          <input type="checkbox" id="pref-auto-advance" checked />
+          <span>Auto-advance multi-step wizard pages ("Next", "Continue")</span>
+        </label>
+      </div>
+    </section>
+
+    <!-- TAB 5: ATS Tester -->
+    <section id="tab-ats" class="tab-content">
+      <div class="section-card">
+        <h3 class="section-title">Test ATS Match Score</h3>
+        <p class="section-desc">Paste any Job Description below to preview your ATS match score, matched skills, and missing keywords.</p>
+        
+        <textarea id="ats-test-input" rows="5" placeholder="Paste job requirements or qualifications here (e.g. 'Looking for a Full Stack Developer with React, Node.js, Python, Docker, AWS...')..."></textarea>
+        
+        <button type="button" id="btn-run-ats-test" class="btn-primary full-width" style="margin-top: 10px;">Analyze ATS Score</button>
+
+        <div id="ats-test-results" style="display:none; margin-top: 14px;">
+          <div class="ats-score-box">
+            <span class="ats-huge" id="test-score-val">88%</span>
+            <span class="ats-grade" id="test-grade-val">High Match</span>
+          </div>
+          
+          <div style="margin-top: 10px;">
+            <strong style="font-size: 11.5px; color: #10b981;">Matched Skills:</strong>
+            <div id="test-matched-chips" class="skills-chip-container"></div>
+          </div>
+
+          <div style="margin-top: 10px;">
+            <strong style="font-size: 11.5px; color: #f59e0b;">Missing Keywords:</strong>
+            <div id="test-missing-chips" class="skills-chip-container"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Global Toast / Status -->
+    <div id="popup-toast" class="popup-toast"></div>
+  </div>
+
+  <script src="defaultProfile.js"></script>
+  <script src="pdfGenerator.js"></script>
+  <script src="atsEngine.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
